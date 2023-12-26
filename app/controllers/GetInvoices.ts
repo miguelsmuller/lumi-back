@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { DataSource } from "typeorm";
 
+import { DataBaseManager } from "../config/DataBaseManager";
 import { EnergyInvoiceModel } from "../models/EnergyInvoiceModel";
 
 export class GetInvoices {
@@ -8,23 +9,8 @@ export class GetInvoices {
 
   constructor() {
     if (!GetInvoices.DataBaseManager) {
-      GetInvoices.DataBaseManager = new DataSource({
-        type: "postgres",
-        host: "localhost",
-        port: 5432,
-        username: "postgres",
-        password: "root",
-        database: "lumi",
-        synchronize: true,
-        logging: true,
-        entities: [EnergyInvoiceModel],
-      });
-
-      GetInvoices.DataBaseManager.initialize()
-        .then(() => {
-          console.log("DataBase initialized!");
-        })
-        .catch((error) => console.log(error));
+      const dbConfig = new DataBaseManager();
+      GetInvoices.DataBaseManager = dbConfig.getManager();
     }
   }
 
@@ -47,8 +33,8 @@ export class GetInvoices {
     const invoices = await query.skip(skip).take(Number(limit)).getMany();
 
     const data = {
-      message: "Data retrieved successfully",
       status: "success",
+      count: invoices.length,
       data: invoices,
     };
 
