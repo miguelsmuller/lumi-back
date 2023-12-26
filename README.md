@@ -6,7 +6,7 @@ O projeto `Lumi Back` é uma API construída com Express para fornecer endpoints
 
 - **[Monorepo Lumi Challenge](https://github.com/miguelsmuller/lumi-challenge)**
   
-- **[Lumi Extraction](https://github.com/miguelsmuller/lumi-back)**
+- **[Lumi Extraction](https://github.com/miguelsmuller/lumi-extraction)**
 
 - **[Lumi Front](https://github.com/miguelsmuller/lumi-front)**
 
@@ -24,13 +24,22 @@ O projeto `Lumi Back` é uma API construída com Express para fornecer endpoints
 .
 ├── app
 │   ├── app.ts
+│   ├── config
+│   │   └── Server.ts
 │   ├── controllers
+│   │   ├── GetHealth.ts
+│   │   └── GetInvoices.ts
 │   ├── models
-│   ├── repositories
+│   │   └── EnergyInvoiceModel.ts
 │   └── routers
+│       └── Routers.ts
+├── .editorconfig
 ├── .env.example
+├── .eslintrc.json
+├── .gitignore
 ├── package.json
 ├── package-lock.json
+├── prettier.config.json
 ├── tsconfig.json
 └── README.md
 ```
@@ -69,12 +78,19 @@ npm run dev
 ```
 
 
-## Rotas da API
+## **Rotas da API**
 
 Após iniciar o servidor, você pode acessar os seguintes endpoints:
 
-1. **`GET http://localhost:3000/health`**: 
-    - Verifica o status do servidor.
+1. **`GET http://[HOST]/health`** Verifica o status do servidor.
 
-2. **`GET http://localhost:3000/getAll`**: 
-    - Retorna todos os registros do banco de dados.
+2. **`GET http://[HOST]/invoices`** Retorna todos os registros do banco de dados.
+    ### **Query Paramns**
+
+    - **`startAt`**: Este parâmetro é utilizado para filtrar os registros a partir de uma data específica. Ele se relaciona com o campo de data `invoice_date`, permitindo que os usuários obtenham faturas que foram geradas após uma determinada data.
+
+    - **`endAt`**: Este parâmetro é semelhante ao `startAt`, mas serve para definir uma data limite. Assim, apenas as faturas até a data especificada serão retornadas.
+    
+    - **`page`**: Este parâmetro é utilizado para navegar entre páginas de resultados. Seu valor determina qual página de resultados será retornada.
+
+    - **`limit`**: Define o número máximo de registros que serão retornados em uma única chamada. Ao combinar este parâmetro com page, os usuários podem controlar a quantidade de registros por página e navegar pelos resultados.
