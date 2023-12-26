@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
-      "target": "es2021",
-      "module": "commonjs",
-      "rootDir": "./app",
-      "outDir": "./dist",
-      "esModuleInterop": true,
-      "forceConsistentCasingInFileNames": true,
-      "strict": true,
-      "skipLibCheck": true,
-      "typeRoots": ["./node_modules/@types", "./types"],
+    "target": "es2021",
+    "module": "commonjs",
+    "rootDir": "./app",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "typeRoots": ["./node_modules/@types", "./types"],
+    // ↓ we set false and pass the responsibility of checking to typescript (default: true)
+    "strict": false,
+    // ↓ this is necessary for TypeORM to work
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
   },
   "include": [
     "./app/**/*.ts"

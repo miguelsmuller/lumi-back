@@ -1,10 +1,11 @@
-import express from "express";
+import { Router } from "express";
+
 import { GetHealth } from "../controllers/GetHealth";
 import { GetInvoices } from "../controllers/GetInvoices";
 
-const Routers = express.Router();
+const Routers = Router();
 
-Routers.get("/health", GetHealth.get.bind(GetHealth));
-Routers.get("/invoices", GetInvoices.get.bind(GetInvoices));
+Routers.get("/health", new GetHealth().get);
+Routers.get("/invoices", new GetInvoices().get);
 
 export default Routers;

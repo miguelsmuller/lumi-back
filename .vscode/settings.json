@@ -4,6 +4,7 @@
         "Lumi",
         "pdfplumber",
         "pdfs",
+        "postgres",
         "psycopg",
         "rects",
         "scee",
