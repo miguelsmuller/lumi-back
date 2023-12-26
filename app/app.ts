@@ -1,29 +1,14 @@
-import express, { Router, Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 
+import Routers from "./routers/Routers";
+
 const app = express();
-const route = Router();
 
 app.use(express.json());
 app.use(cors());
 
-route.get("/health", (_req: Request, res: Response) => {
-  const health = {
-    message: "Welcome to Express and PostgreSQL",
-    status: "success",
-  };
-  res.json(health);
-});
-
-route.get("/getAll", (_req: Request, res: Response) => {
-  const health = {
-    message: "Welcome to Express and PostgreSQL",
-    status: "success",
-  };
-  res.json(health);
-});
-
-app.use(route);
+app.use("/", Routers);
 
 app.listen(3000, () => {
   console.log("Server Listening on PORT: 3000");
