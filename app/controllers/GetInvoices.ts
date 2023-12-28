@@ -30,6 +30,8 @@ export class GetInvoices {
       });
     }
 
+    query = query.orderBy("invoice.invoiceDate", "ASC");
+
     const invoices = await query.skip(skip).take(Number(limit)).getMany();
 
     const data = {
