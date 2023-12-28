@@ -30,7 +30,7 @@ export class DataBaseManager {
       await this.databaseManager.initialize();
       console.log("DataBase initialized!");
     } catch (error) {
-      console.log(error);
+      console.log("Erro ao conectar ao banco de dados:", error.message);
     }
   }
 
