@@ -12,6 +12,12 @@ O projeto `Lumi Back` é uma API construída com Express para fornecer endpoints
 
 ## **Aspectos Técnicos**
 
+Os detalhes completos do desafio, incluindo especificações para o projeto do front-end, estão disponíveis no PDF do monorepo. Você pode acessar o PDF através do link abaixo:
+
+- **[Detalhes do Desafio - Lumi Challenge](https://github.com/miguelsmuller/lumi-challenge/blob/e8622d0e399c3e2c4802c0c3a1911dc5d86953a8/docs/Teste%20Pr%C3%A1tico%20-%20Dev%20Full%20Stack%20-%20Lumi.pdf)**
+
+#### Outros Pontos 
+
 - **TypeScript**: A escolha do TypeScript permite uma melhor integração e verificação de tipos, tornando o código mais robusto e manutenível.
 
 - **Express**: Utilizado como framework para construir a API, oferecendo facilidade e eficiência na criação de rotas e middlewares.
@@ -24,23 +30,16 @@ O projeto `Lumi Back` é uma API construída com Express para fornecer endpoints
 .
 ├── app
 │   ├── app.ts
-│   ├── config
-│   │   └── Server.ts
-│   ├── controllers
-│   │   ├── GetHealth.ts
-│   │   └── GetInvoices.ts
-│   ├── models
-│   │   └── EnergyInvoiceModel.ts
-│   └── routers
-│       └── Routers.ts
+│   ├── config/
+│   ├── controllers/
+│   ├── models/
+│   └── routers/
 ├── .editorconfig
-├── .env.example
-├── .eslintrc.json
 ├── .gitignore
 ├── package.json
-├── package-lock.json
-├── prettier.config.json
 ├── tsconfig.json
+├── Makefile
+├── Dockerfile
 └── README.md
 ```
 
@@ -52,6 +51,20 @@ O projeto `Lumi Back` é uma API construída com Express para fornecer endpoints
 - **`npm run build`**: Compila o código TypeScript para JavaScript usando o TypeScript Compiler (`tsc`).
 
 - **`npm start`**: Inicia o servidor após a compilação do código.
+
+### **Makefile**
+
+Adicionalmente aos comando acima esse projeto também possui um Makefile com os seguintes alvos:
+
+- **`make build-image`**: Constrói uma imagem Docker para o projeto.
+
+- **`make run-image`**: Inicia um contêiner Docker com o projeto em execução.
+
+- **`make stop-image`**: Para e remove o contêiner Docker do projeto.
+
+- **`make tag-image`**: Adiciona uma tag à imagem Docker.
+
+- **`make publish-image`**: Publica a imagem Docker em um registro (é necessário configurar o registro).
 
 
 ## **Rodando Localmente**
