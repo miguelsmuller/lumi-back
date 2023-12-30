@@ -26,7 +26,7 @@ export class Server {
   }
 
   public start(): void {
-    const port = Number(this.envVarManager.get("PORT", "1234"));
+    const port = Number(this.envVarManager.get("PORT", "3000"));
 
     this.app.listen(port, () => {
       console.log(`Server Listening on PORT: ${port}`);
